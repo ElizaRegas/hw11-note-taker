@@ -9,6 +9,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Notes.html route
 app.get("/notes", (req, res) => {
@@ -19,7 +20,7 @@ app.get("/notes", (req, res) => {
 app.get("/api/notes", (req, res) => {
   fs.readFile(__dirname + "/db/db.json", "utf8", (err, data) => {
     if (err) throw err;
-    return res.json(data);
+    return res.json(JSON.parse(data));
   });
 });
 

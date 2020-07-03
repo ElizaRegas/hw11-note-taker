@@ -137,6 +137,7 @@ const renderNoteList = (notes) => {
 
 // Gets notes from the db and renders them to the sidebar
 const getAndRenderNotes = () => {
+  console.log("get and render notes");
   return getNotes().then(renderNoteList);
 };
 
